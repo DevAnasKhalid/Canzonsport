@@ -66,19 +66,16 @@
     </nav>
   </header>
 
-  <!-- <div class="sc-banner"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498649/final_ko7nvh.jpg" alt=""></div> -->
 
   <section id="home">
     <div class="slider-container">
       <!-- Image slider -->
       <div class="slider">
-        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495787/image1_vkcj8y.jpg" alt="Image 1"></div>
-        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495785/image2_cooh2r.jpg" alt="Image 2"></div>
-        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495774/image3_hkfmd5.jpg" alt="Image 3"></div>
-        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495786/image4_j6w1uo.jpg" alt="Image 4"></div>
-        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495792/image5_olkiqc.jpg" alt="Image 5"></div>
-        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498649/final_ko7nvh.jpg" alt="Image 6"></div>
-
+        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495787/image1_vkcj8y.jpg" alt="Image 1" loading="lazy"></div>
+        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495785/image2_cooh2r.jpg" alt="Image 2" loading="lazy"></div>
+        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495774/image3_hkfmd5.jpg" alt="Image 3" loading="lazy"></div>
+        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495786/image4_j6w1uo.jpg" alt="Image 4" loading="lazy"></div>
+        <div class="slide"><img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726495792/image5_olkiqc.jpg" alt="Image 5" loading="lazy"></div>
       </div>
 
       <!-- Navigation arrows -->
@@ -92,8 +89,6 @@
         <span class="circle" onclick="setSlide(2)"></span>
         <span class="circle" onclick="setSlide(3)"></span>
         <span class="circle" onclick="setSlide(4)"></span>
-        <span class="circle" onclick="setSlide(5)"></span>
-
       </div>
     </div>
   </section>
@@ -233,9 +228,18 @@
         state-of-the-art facilities and skilled workforce allow us to produce a wide range of sportswear, from
         team uniforms to performance gear. We pride ourselves on our commitment to quality, innovation, and
         customer satisfaction.</p>
-        <div class="com-pic">
-          <div></div>
-        </div>
+<div>
+  <div class="gallery" id="gallery">
+    <!-- Images will be dynamically added here -->
+</div>
+
+<div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img src="" alt="" id="modal-image" class="modal-image">
+    </div>
+</div>
+</div>
     </section>
 
     <section id="faq">
