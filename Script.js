@@ -205,3 +205,53 @@ window.addEventListener('resize', () => {
 
 updateTestimonials();
 startAutoRotate();
+
+
+
+const gallery = document.getElementById('gallery');
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modal-image');
+const closeBtn = document.getElementsByClassName('close')[0];
+
+// Sample image URLs (replace with your actual image URLs)
+const images = [
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502318/Garment_Manufacturer_and_Supplier_custom_clothing_dgn7oa.jpg',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502318/Manufacturer_Garment_and_Supplier_of_custom_clothing_bbikrm.png',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502295/CANZON_SPORT_Company_manufacturer_and_exporter_of_High_Quality_Apparel_Textile_Clothing._We_Provide_Customized_Clothing_with_Low_MOQs._rexbfr.png',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502317/CUSTOM_CLOTHING_MANUFACTURER_yulbbz.png',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502319/Garment_Manufacturer_and_Supplier_of_custom_clothing_cnz3qe.png',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502296/Clothing_Manufacturers_Apparel_Manufacturing_Sports_Uniforms_Fitness_Wear_SportWear_rmsuaq.jpg',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502301/Canzon_Sport_w0bcdf.jpg',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502335/Custom_Clothing_Manufacturer_rojper.png',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726503019/Quality_needs_Concentration_2_veadnv.jpg',
+    'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726503019/Our_Display_Centre_jzqdyl.jpg',
+
+];
+
+// Populate gallery
+images.forEach((src, index) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Canzon Sport Image ${index + 1}`;
+    item.appendChild(img);
+    gallery.appendChild(item);
+
+    item.onclick = () => {
+        modal.style.display = 'block';
+        modalImg.src = src;
+    };
+});
+
+// Close modal
+closeBtn.onclick = () => {
+    modal.style.display = 'none';
+};
+
+// Close modal when clicking outside the image
+window.onclick = (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
