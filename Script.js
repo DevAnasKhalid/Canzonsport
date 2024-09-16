@@ -123,3 +123,85 @@ let timeout;
             });
         });
 
+
+        
+
+// testimonials JS
+
+const container = document.querySelector('.testimonials-container');
+const wrapper = document.querySelector('.testimonials-wrapper');
+const testimonials = document.querySelectorAll('.testimonial');
+
+let currentIndex = 0;
+const totalTestimonials = testimonials.length;
+let visibleTestimonials = window.innerWidth >= 768 ? 3 : 1;
+let isDragging = false;
+let startX, startScrollLeft;
+let autoRotateInterval;
+
+function updateTestimonials() {
+    const translateX = -currentIndex * (100 / visibleTestimonials);
+    wrapper.style.transform = `translateX(${translateX}%)`;
+}
+
+function nextTestimonial() {
+    currentIndex = (currentIndex + 1) % (totalTestimonials - visibleTestimonials + 1);
+    updateTestimonials();
+}
+
+function startAutoRotate() {
+    stopAutoRotate();
+    autoRotateInterval = setInterval(nextTestimonial, 5000);
+}
+
+function stopAutoRotate() {
+    clearInterval(autoRotateInterval);
+}
+
+function handleDragStart(e) {
+    isDragging = true;
+    startX = e.type === 'touchstart' ? e.touches[0].pageX : e.pageX;
+    startScrollLeft = wrapper.scrollLeft;
+    container.style.cursor = 'grabbing';
+    stopAutoRotate();
+}
+
+function handleDragMove(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.type === 'touchmove' ? e.touches[0].pageX : e.pageX;
+    const walk = (x - startX) * 2;
+    wrapper.scrollLeft = startScrollLeft - walk;
+}
+
+function handleDragEnd() {
+    isDragging = false;
+    container.style.cursor = 'grab';
+    const scrollPosition = wrapper.scrollLeft;
+    const testimonialWidth = wrapper.offsetWidth / visibleTestimonials;
+    currentIndex = Math.round(scrollPosition / testimonialWidth);
+    updateTestimonials();
+    startAutoRotate();
+}
+
+container.addEventListener('mousedown', handleDragStart);
+container.addEventListener('touchstart', handleDragStart);
+
+container.addEventListener('mousemove', handleDragMove);
+container.addEventListener('touchmove', handleDragMove);
+
+container.addEventListener('mouseup', handleDragEnd);
+container.addEventListener('mouseleave', handleDragEnd);
+container.addEventListener('touchend', handleDragEnd);
+
+window.addEventListener('resize', () => {
+    const newVisibleTestimonials = window.innerWidth >= 768 ? 3 : 1;
+    if (newVisibleTestimonials !== visibleTestimonials) {
+        visibleTestimonials = newVisibleTestimonials;
+        currentIndex = 0;
+        updateTestimonials();
+    }
+});
+
+updateTestimonials();
+startAutoRotate();
