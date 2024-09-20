@@ -117,7 +117,7 @@ nav {
 }
 
 .logo-text {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     display: inline-block;
 }
@@ -162,6 +162,7 @@ nav {
 
 
 
+
 nav ul {
     display: none;
     list-style: none;
@@ -172,7 +173,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -181,6 +182,49 @@ nav ul li a {
     font-size: 1.5rem;
     cursor: pointer;
 }
+
+.close-toggle {
+    display: none; /* Initially hide the close toggle */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide items by default */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Position it absolutely */
+        background-color: rgba(228, 223, 223, 0.2); /* Light transparent background */
+        backdrop-filter: blur(10px); /* Glass effect */
+        width: 100%; /* Full width */
+        top: 60px; /* Position below the header */
+        left: 0; /* Align left */
+        z-index: 999; /* Ensure it’s above other content */
+        padding: 1rem; /* Add padding for the items */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    nav ul li a {
+        color: #000000;
+    }
+
+
+    nav ul.show {
+        display: flex; /* Show items when the menu is toggled */
+    }
+
+    .menu-toggle {
+        display: block; /* Show toggle button */
+    }
+
+    nav ul li {
+        margin: 0.5rem 0; /* Add vertical spacing between items */
+
+    }
+}
+
+
 
 
 section {
@@ -191,7 +235,6 @@ section {
 h2 {
     margin-bottom: 1rem;
 }
-
 
 
 /* Slider Container */
@@ -224,7 +267,7 @@ h2 {
 /* Navigation Arrows */
 .prev, .next {
     position: absolute;
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
@@ -255,7 +298,7 @@ h2 {
 /* Circle Indicators (Overlaid on Slider) */
 .circle-indicators {
     position: absolute;
-    bottom: 150px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -420,6 +463,19 @@ h2 {
 }
 
 
+  /* Default styles of instagram production for PC */
+  #instagramIframe {
+    width: 100%;
+    height: 960px;
+  }
+
+  /* Adjust height for mobile devices */
+  @media (max-width: 768px) {
+    #instagramIframe {
+      height: 420px; /* You can adjust this value for the desired height on mobile */
+    }
+  }
+
 
 .gallery {
     display: grid;
@@ -505,7 +561,8 @@ h2 {
             border: 1px solid #ff0000;
             border-radius: 8px;
             margin-right: 20px;
-            background-color: rgb(228, 224, 224);
+            background-color: rgba(255, 244, 244, 1);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
         }
 
         .testimonial-header {
@@ -544,6 +601,7 @@ h2 {
             .testimonial {
                 flex: 0 0 calc(33.333% - 20px);
             }
+
         }
 
         @media (max-width: 767px) {
@@ -556,6 +614,8 @@ h2 {
                 margin-right: 0;
             }
         }
+
+
 
 .contact-container {
 display: flex;
@@ -703,13 +763,7 @@ display: none;
 }
 
 
-/* footer {
-    background-color: var(--header-footer-color);
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    box-shadow: -5px -5px 10px rgba(252, 3, 3, 0.993);
-} */
+
 
 
 /* WhatsApp Button */
@@ -805,12 +859,16 @@ footer {
     background-color: var(--header-footer-color);
     color: var(--all-mini-boxs-text-color);
     padding: 20px 0;
-    box-shadow: -5px -5px 10px rgba(252, 3, 3, 0.993);
+    box-shadow: 0px -5px 10px rgba(252, 3, 3, 0.993);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
 
   }
   
   .footer-container {
-    max-width: 1200px;
+    max-width: 1200px;  /* Allow container to take full width */
+    width: auto;
     margin: 0 auto;
     padding: 0 15px;
     display: flex;
@@ -935,4 +993,9 @@ footer {
       gap: 10px;
       padding: 10px 15px; /* Adjust padding for better alignment on small screens */
     }
+
+
+
   }
+
+
