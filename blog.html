@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- Meta Title -->
+    <title>How to Build a Custom Clothing Brand in 2025 | Canzonsport</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Learn how to build a successful custom clothing apparel brand in 2025! Partner with Canzonsport, a leading custom sportswear manufacturer. Get started today!">
+
+    <!-- Meta Keywords -->
+    <meta name="keywords" content="custom clothing manufacturer, custom sportswear, sportswear manufacturer, build clothing brand, personalized clothing, custom apparel, Canzonsport">
+
+  <meta name="author" content="Canzon Sport">
+  <link rel="canonical" href="https://www.canzonsport.com/blog.html">
+  <meta name="robots" content="index, follow">
+
+
+
+
+  <link rel="icon" href="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498287/favicon-32x32_hkjv9q.png"
+    type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+    <style>
+        :root {
+    --background-color: #ffffff; /* Define a CSS variable for background color */
+    --Text-Color: rgb(0, 0, 0);
+    --header-footer-color: #000000;
+    --all-mini-boxs-color: rgb(0, 0, 0);
+    --all-mini-boxs-text-color: rgb(255, 255, 255);
+  }
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Roboto', 'Arial', sans-serif;
+}
+
+
+
+body {
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    background-color: var(--background-color);
+}
+
+/* Notification Bar Styles */
+.notification-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1.5rem; /* Set the height of the notification bar */
+    width: 100%;
+    background-color: #fe2d29;
+    color: white;
+    text-align: center;
+    z-index: 9999; /* Ensure this is higher than other elements */
+    font-size: 1rem;
+    font-weight: bold;
+    overflow: hidden; /* Prevent overflow of the animation */
+    white-space: nowrap; /* Keep text in a single line */
+    line-height: 1.5rem; /* Match the line-height to the height of the bar */
+    padding: 0; /* Remove default padding */
+}
+
+
+/* Keyframes for the scrolling animation */
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Apply animation to the span inside the notification bar */
+.notification-bar span {
+    display: inline-block;
+    animation: scroll-text 15s linear infinite;
+}
+
+/* Header Styles */
+header {
+    font-weight: 900;
+    background-color: var(--header-footer-color);
+    color: #fff;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 40px; /* Adjust based on the height of the notification bar */
+    z-index: 1000; /* Ensure this is below the notification bar */
+    box-shadow: 5px 5px 10px rgba(252, 3, 3, 0.993);
+    /* Add a margin-top equivalent to the height of the notification bar */
+    margin-top: -16px; /* Adjust as necessary */
+}
+
+/* .sc-banner {
+    object-fit: fill;
+padding: 115px 30px 0px 30px;
+height: 110px;
+
+} */
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-list a:hover {
+    color: rgb(255, 0, 0); /* Text color on hover */
+  }
+
+
+.logo {
+    display: flex;
+    align-items: center; /* Align the image and text vertically */
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for the whole logo */
+}
+
+.logo a {
+    display: flex; /* Ensure the link wraps both the image and text */
+    align-items: center; /* Vertically align the image and text */
+    text-decoration: none; /* Remove underline for the text inside the link */
+    color: inherit; /* Use the same text color as the parent */
+}
+
+.logo-image {
+    width: 50px; /* Adjust the size of the logo image */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 10px; /* Space between the image and the text */
+}
+
+.logo-text {
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.logo-text span {
+    display: inline-block;
+    animation: red-wave 1.5s ease-in-out infinite; /* Infinite loop for animation */
+    color: black; /* Default text color */
+}
+
+/* Define the keyframes for the red color animation */
+@keyframes red-wave {
+    0%, 100% {
+        color: rgb(243, 239, 239); /* Start and end with black (or your default color) */
+    }
+    50% {
+        color: red; /* Middle of the transition is red */
+    }
+    60% {
+        color: rgb(255, 102, 0); /* Middle of the transition is red */
+    }
+    65% {
+        color: rgb(255, 102, 0); /* Middle of the transition is red */
+    }
+    70% {
+        color: rgb(255, 60, 0); /* Middle of the transition is red */
+    }
+}
+
+/* Delay the animation for each letter */
+.logo-text span:nth-child(1) { animation-delay: 0s; }
+.logo-text span:nth-child(2) { animation-delay: 0.1s; }
+.logo-text span:nth-child(3) { animation-delay: 0.2s; }
+.logo-text span:nth-child(4) { animation-delay: 0.3s; }
+.logo-text span:nth-child(5) { animation-delay: 0.4s; }
+.logo-text span:nth-child(6) { animation-delay: 0.5s; }
+.logo-text span:nth-child(7) { animation-delay: 0.6s; }
+.logo-text span:nth-child(8) { animation-delay: 0.7s; }
+.logo-text span:nth-child(9) { animation-delay: 0.8s; }
+.logo-text span:nth-child(10) { animation-delay: 0.9s; }
+.logo-text span:nth-child(11) { animation-delay: 1s; }
+
+
+
+
+nav ul {
+    display: none;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 1rem;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.close-toggle {
+    display: none; /* Initially hide the close toggle */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide items by default */
+        flex-direction: column; /* Stack items vertically */
+        position: absolute; /* Position it absolutely */
+        background-color: rgba(228, 223, 223, 0.2); /* Light transparent background */
+        backdrop-filter: blur(10px); /* Glass effect */
+        width: 100%; /* Full width */
+        top: 60px; /* Position below the header */
+        left: 0; /* Align left */
+        z-index: 999; /* Ensure it’s above other content */
+        padding: 1rem; /* Add padding for the items */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    nav ul li a {
+        color: #000000;
+    }
+
+
+    nav ul.show {
+        display: flex; /* Show items when the menu is toggled */
+    }
+
+    .menu-toggle {
+        display: block; /* Show toggle button */
+    }
+
+    nav ul li {
+        margin: 0.5rem 0; /* Add vertical spacing between items */
+
+    }
+}
+
+
+
+.container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 150px 50px 100px 50px;
+        }
+
+
+
+/* WhatsApp Button */
+.whatsapp-btn {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background-color: #25D366; /* WhatsApp green */
+border-radius: 50%;
+padding: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.whatsapp-btn img {
+width: 40px; /* Adjust size as needed */
+height: 40px; /* Adjust size as needed */
+}
+
+/* Social Icons */
+.social-icons {
+position: fixed;
+left: 3px;
+top: 70%;
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+gap: 3px;
+z-index: 1000;
+transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.social-icons a {
+display: block;
+width: 40px; /* Adjust size as needed */
+height: 40px; /* Adjust size as needed */
+}
+
+.social-icons img {
+width: 100%;
+height: 100%;
+}
+
+
+/* Hidden state */
+.social-icons.hidden {
+opacity: 0;
+visibility: hidden;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    nav ul {
+        display: flex;
+    }
+
+
+    .menu-toggle {
+        display: none;
+    }
+
+
+    /* left right space in web page */
+    section {
+        padding: 5rem 2rem 0rem 2rem;
+    }
+
+}
+
+
+
+footer {
+    background-color: var(--header-footer-color);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0px -5px 10px rgba(252, 3, 3, 0.993);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+
+  }
+  
+  .footer-container {
+    max-width: 1200px;  /* Allow container to take full width */
+    width: auto;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .footer-left {
+    flex: 1;
+    margin-right: 20px;
+    text-align: left; /* Center align text */
+  }
+  
+  .footer-logo-text {
+    display: flex;
+    justify-content: left; /* Center align logo and text */
+    align-items: center;
+  }
+  
+  .footer-left h2 {
+    font-size: 2rem;
+    margin-bottom: -1px;
+  }
+  
+  .footer-left p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .footer-right {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-column {
+    flex: 1;
+    text-align: center; /* Center align text */
+  }
+  
+  .footer-column h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+
+
+  .footer-column ul li:hover {
+    color: rgb(255, 0, 0); /* Text color on hover */
+    text-decoration: underline #fe2d29;
+  }
+
+  /* Footer Bottom Styles */
+  .footer-bottom {
+    padding: 10px 20px; /* Adjusted padding for better alignment */
+    text-align: center; /* Center align text */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  .foot-social-icons {
+    display: flex;
+    font-size: x-large;
+    gap: 20px;
+    justify-content: center; /* Center align social icons */
+  }
+  
+  .foot-social-icons i {
+    font-size: xx-large;
+    color: #ffffff; /* Replace #ff0000 with your desired color */
+  }
+  
+  .foot-social-icons i:hover{
+    color: rgb(255, 0, 0);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center; /* Center align container */
+      text-align: center;
+    }
+  
+    .footer-right {
+      flex-direction: column;
+      align-items: center; /* Center align columns */
+    }
+  
+    .footer-column {
+      margin-bottom: 20px;
+    }
+  
+    .footer-left {
+      margin-bottom: 20px;
+    }
+  
+    .footer-bottom {
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px 15px; /* Adjust padding for better alignment on small screens */
+    }
+
+
+
+  }
+
+
+    </style>
+</head>
+
+<body>
+  <div class="notification-bar">
+    <span>🎉 Exciting Offer 📢 :- ✈️ Get worldwide free delivery on orders above 20+ pieces 🎉</span>
+  </div>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="https://canzonsport.com/">
+          <img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498288/logo_mqibd7.png"
+            alt="Canzon Sport Logo" class="logo-image">
+          <span class="logo-text">
+            <span>C</span><span>A</span><span>N</span><span>Z</span><span>O</span><span>N</span>
+            <span>S</span><span>P</span><span>O</span><span>R</span><span>T</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-list">
+        <ul>
+          <li class="nav-home"><a href="#home">Home</a></li>
+          <li class="nav-about"><a href="#whyus">Why Us?</a></li>
+          <li class="nav-overview"><a href="#overview">Company Overview</a></li>
+          <li class="nav-faq"><a href="#faq">FAQs</a></li>
+          <li class="nav-faq"><a href="#Feedback">Feedback</a></li>
+          <li class="nav-instagram"><a href="#Production">Production</a></li>
+          <li class="nav-contact"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="menu-toggle">☰</div>
+      <div class="close-toggle" style="display: none;"><i class="fa-solid fa-circle-xmark fa-xl"></i></div>
+    </nav>
+  </header>
+
+<article>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <h1 style="text-align: center;">How to Build Anyone's Custom Clothing Apparel Brand in 2025</h1>
+
+<!-- Image Section -->
+<div style="text-align: center; margin: 20px 0;">
+    <img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726917566/Learn_how_to_build_your_own_custom_clothing_apparel_brand_in_2025_From_market_research_to_partnering_with_a_top_canzon_sport_custom_clothing_manufacturer_yukhzm.jpg" 
+    alt="How to build your own custom clothing apparel brand in 2025" style="width: 100%; max-width: 1000px; height: auto;">
+</div>
+
+
+        <p>The fashion industry is rapidly evolving, and <strong>custom clothing</strong> has become a popular trend, especially in the world of sports and activewear. Whether you're looking to build a <strong>sportswear brand</strong> or want to design unique <strong>personalized clothing</strong>, 2025 is the perfect time to start your journey. In this article, we'll guide you step-by-step on how to successfully launch a <strong>custom clothing apparel brand</strong> and show you why choosing <a href="https://www.canzonsport.com" target="_blank"><strong>Canzonsport.com</strong></a> as your <strong>custom clothing manufacturer</strong> is the smartest move.</p>
+<br>
+        <h2>Why Custom Clothing is Booming in 2025</h2>
+        <p>As consumers look for more unique, tailored experiences, the demand for <strong>custom apparel</strong> has exploded. In 2025, people want clothing that reflects their individuality and values. Whether for sports teams, gyms, or personal use, custom-designed clothes are seen as both functional and fashionable.</p>
+<br>
+        <h3>The Growing Demand for Custom Sportswear</h3>
+        <p>Particularly in the realm of <strong>sportswear</strong>, customization is booming. Athletes and fitness enthusiasts want gear that offers not only performance but also the opportunity to represent their identity. This rise in demand for <strong>custom sportswear</strong> opens the door to building a successful <strong>sportswear brand</strong>.</p>
+<br>
+        <h2>Step-by-Step Guide to Building a Custom Clothing Brand in 2025</h2>
+        <p>Creating a successful custom apparel brand requires strategic planning and the right partner. Follow these steps to launch your dream brand:</p>
+<br>
+        <h3>Step 1: Research Your Target Market</h3>
+        <p>Before designing a single piece, you must understand your audience. Who are they? What do they value?</p>
+
+        <ul>
+            <li>Age group (teens, adults, athletes)</li>
+            <li>Preferences (sustainability, high performance, stylish designs)</li>
+            <li>Clothing type (sportswear, casual wear, corporate wear)</li>
+        </ul>
+<br>
+        <h3>Step 2: Find the Right Custom Clothing Manufacturer</h3>
+        <p>Your choice of manufacturer will determine the quality of your brand. Look for manufacturers who can offer:</p>
+
+        <ul>
+            <li><strong>Custom sportswear options</strong></li>
+            <li>High-quality <strong>personalized clothing</strong></li>
+            <li>Fast turnaround times</li>
+            <li>Scalability for growth</li>
+        </ul>
+
+        <p>This is where <a href="https://www.canzonsport.com" target="_blank"><strong>Canzonsport.com</strong></a> excels. As a leading <strong>sportswear manufacturer</strong>, we specialize in helping entrepreneurs like you create high-performance, stylish apparel that resonates with your audience.</p>
+<br>
+        <h3>Step 3: Design Your Apparel</h3>
+        <p>In 2025, consumers expect high-quality fabrics, sustainable options, and innovative designs. Consider:</p>
+
+        <ul>
+            <li>Fabric options (eco-friendly, moisture-wicking)</li>
+            <li>Color schemes</li>
+            <li>Custom logos and embroidery</li>
+            <li>Fit and style for your target market</li>
+        </ul>
+<br>
+        <h3>Step 4: Build Your Brand Identity</h3>
+        <p>Your brand is more than just clothing—it's the experience and values you convey. Focus on:</p>
+
+        <ul>
+            <li><strong>Logo and Branding</strong>: A strong, memorable logo that reflects your brand’s values.</li>
+            <li><strong>Brand Story</strong>: Share your mission and what makes your brand unique.</li>
+            <li><strong>Online Presence</strong>: Build a website and establish a social media presence that engages your target audience.</li>
+        </ul>
+<br>
+        <h3>Step 5: Marketing and Distribution</h3>
+        <p>Once your products are ready, it’s time to bring them to market. Use the following strategies:</p>
+
+        <ul>
+            <li><strong>Social Media Marketing</strong>: Instagram and TikTok are gold mines for fashion brands.</li>
+            <li><strong>Influencer Partnerships</strong>: Collaborate with influencers who resonate with your target market.</li>
+            <li><strong>E-commerce Platform</strong>: Sell your products on your website, Shopify, or other platforms.</li>
+        </ul>
+<br>
+        <h2>Why Choose Canzonsport as Your Custom Clothing Manufacturer?</h2>
+        <p>Choosing the right partner is crucial for your success, and <a href="https://www.canzonsport.com" target="_blank"><strong>Canzonsport.com</strong></a> has all the expertise you need to grow your brand in 2025.</p>
+<br>
+        <h3>Quality and Precision</h3>
+        <p>As a top <strong>custom clothing manufacturer</strong>, we offer:</p>
+
+        <ul>
+            <li>Premium materials that meet performance and fashion standards</li>
+            <li>Advanced manufacturing processes for precision and quality</li>
+            <li>Full control over customization, from fabrics to fit</li>
+        </ul>
+<br>
+        <h3>Industry Expertise</h3>
+        <p>Our team has years of experience in the <strong>sportswear</strong> and <strong>custom apparel</strong> industry. We can help you design and manufacture high-quality clothing that stands out in a crowded marketplace.</p>
+<br>
+        <h3>Fast Turnaround and Scalability</h3>
+        <p>Whether you’re just starting or scaling up your business, <a href="https://www.canzonsport.com" target="_blank"><strong>Canzonsport</strong></a> can support your growth. We offer flexible order quantities, ensuring you can start small and grow as demand for your brand increases.</p>
+<br>
+        <h2>Trends to Watch for in Custom Apparel 2025</h2>
+        <p>In 2025, it’s not just about having unique clothing—it’s about innovation and staying ahead of trends. Consider these upcoming trends:</p>
+
+        <h3>Sustainability</h3>
+        <p>Eco-friendly materials and sustainable manufacturing processes are no longer a luxury but a necessity for any new clothing brand.</p>
+
+        <h3>Smart Clothing</h3>
+        <p>The future of sportswear includes smart fabrics that monitor performance metrics like heart rate and body temperature.</p>
+<br>
+        <h2>Get Started with Canzonsport Today!</h2>
+        <p>Ready to bring your <strong>custom clothing</strong> brand to life? With the guidance and expertise of <a href="https://www.canzonsport.com" target="_blank"><strong>Canzonsport.com</strong></a>, you can build a brand that’s unique, high-quality, and poised for success.</p>
+<br>
+        <h3>Why Wait? Contact Canzonsport Today!</h3>
+        <p><strong>Visit <a href="https://www.canzonsport.com" target="_blank">Canzonsport.com</a></strong> now to get started on your custom clothing journey!</p>
+    </div>
+
+</article>
+
+
+
+    <!-- WhatsApp Button -->
+    <a href="https://api.whatsapp.com/message/NQIC7WOPIVBWE1" class="whatsapp-btn" target="_blank"
+      title="Chat with us on WhatsApp">
+      <img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498288/whatsapp_ihqp6j.png" alt="WhatsApp" />
+    </a>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com/canzonsports/" target="_blank" title="Instagram"><img
+          src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498287/instagram_przt2l.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/conzonsport" target="_blank" title="Facebook"><img
+          src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498287/facebook_b7dseq.png" alt="facebook"></a>
+      <a href="https://www.youtube.com/@Canzonsport" target="_blank" title="Twitter"><img
+          src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498288/youtube_yqeczs.png" alt="Youtube"></a>
+      <a href="https://pinterest.com/canzonsport/" target="_blank" title="pinterest"><img
+          src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498287/pinterest_h8jwrv.png" alt="pinterest"></a>
+      <a href="https://www.linkedin.com/company/canzon-sport/" target="_blank" title="linkedin"><img
+          src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498287/linkedin_lvv4yg.png" alt="Linkedin"></a>
+      <!-- Add more social icons as needed -->
+    </div>
+
+
+    <!-- footer herere -->
+    <footer>
+      <div class="footer-container" style="font-family: poppins;">
+        <!-- Left side: Logo and description -->
+        <div class="footer-left">
+          <div class="footer-logo-text"><img
+              src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498287/b_l7spgl.png" alt="logo"
+              style="height: 60px;">
+            <span>
+              <h2 style="font-size: larger;"><strong>CANZON SPORT</strong></h2>
+            </span>
+          </div>
+          <div>
+            <p>Canzon Sport is a leading custom clothing manufacturer, specializing in high-quality sportswear and
+              custom apparel. We provide premium clothing solutions tailored for brands, teams, and businesses, and we are
+              committed to exceptional craftsmanship and style. Offering worldwide fast shipping, Canzon Sport is your
+              trusted partner for custom apparel that elevates your brand. Let's Build a Brand with us!</p>
+          </div>
+          <div>
+            <img src="https://res.cloudinary.com/dgjlnqft1/image/upload/v1726498288/payment_hpbbaz.png" alt="payment"
+              style="width: 328px; height: 50px; object-fit: cover;">
+          </div>
+        </div>
+
+
+        <!-- Right side: Categories (4 columns) -->
+        <div class="footer-right">
+          <div class="footer-column">
+            <h3>CATEGORIES</h3>
+            <ul>
+              <li><a href="https://www.canzonsport.com/blog.html">Blog</a></li>
+              <li><a href="#">Second Link</a></li>
+              <li><a href="#">Third Link</a></li>
+              <li><a href="#">Fourth Link</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>CATEGORIES</h3>
+            <ul>
+              <li><a href="#">First Link</a></li>
+              <li><a href="#">Second Link</a></li>
+              <li><a href="#">Third Link</a></li>
+              <li><a href="#">Fourth Link</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>CATEGORIES</h3>
+            <ul>
+              <li><a href="#">First Link</a></li>
+              <li><a href="#">Second Link</a></li>
+              <li><a href="#">Third Link</a></li>
+              <li><a href="#">Fourth Link</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr style="border: 0.5px solid rgb(255, 255, 255);">
+
+      <!-- Footer Bottom: Copyright and Social Icons -->
+      <div class="footer-bottom">
+        <p><strong>Copyright © 2024 Canzon Sport. All rights reserved - @Canzonsport</strong></p>
+        <br>
+        <div class="foot-social-icons">
+          <a href="https://www.facebook.com/conzonsport"><i class="fa-brands fa-square-facebook"></i></a>
+          <a href="https://www.instagram.com/canzonsports/"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="https://www.youtube.com/@Canzonsport"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://pinterest.com/canzonsport/"><i class="fa-brands fa-square-pinterest"></i></a>
+          <a href="https://www.linkedin.com/company/canzon-sport/"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+
+
+    // Adjust nav display on window resize
+    window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768) {
+            nav.style.display = 'flex';
+        } else {
+            nav.style.display = 'none';
+        }
+    });
+
+let timeout;
+const socialIcons = document.querySelector('.social-icons');
+
+function handleScroll() {
+    // Show the social icons
+    socialIcons.classList.remove('hidden');
+
+    // Clear the previous timeout
+    clearTimeout(timeout);
+
+    // Set a new timeout to hide the icons after 3 seconds of inactivity
+    timeout = setTimeout(() => {
+        socialIcons.classList.add('hidden');
+    }, 3000); // 3000ms = 3 seconds
+}
+
+// Listen for scroll events
+window.addEventListener('scroll', handleScroll);
+
+// Initially hide the social icons
+socialIcons.classList.add('hidden');
+
+
+// menu toggle
+
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const closeToggle = document.querySelector('.close-toggle');
+    const nav = document.querySelector('nav ul');
+
+    menuToggle.addEventListener('click', function () {
+        nav.style.display = 'flex';
+        menuToggle.style.display = 'none'; // Hide menu toggle
+        closeToggle.style.display = 'block'; // Show close toggle
+    });
+
+    closeToggle.addEventListener('click', function () {
+        nav.style.display = 'none';
+        closeToggle.style.display = 'none'; // Hide close toggle
+        menuToggle.style.display = 'block'; // Show menu toggle
+    });
+});
+
+    </script>
+</body>
+</html>
