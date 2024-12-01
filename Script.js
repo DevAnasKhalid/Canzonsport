@@ -156,7 +156,66 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+    // video gallary
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.video-container');
+    const leftButton = document.querySelector('.scroll-left');
+    const rightButton = document.querySelector('.scroll-right');
+    const videoItems = document.querySelectorAll('.video-item');
+    let currentIndex = 0;
+
+    function updateGallery() {
+        const itemWidth = videoItems[0].offsetWidth;
+        container.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+
+    function scrollLeft() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateGallery();
+        }
+    }
+
+    function scrollRight() {
+        if (currentIndex < videoItems.length - (window.innerWidth > 768 ? 3 : 1)) {
+            currentIndex++;
+            updateGallery();
+        }
+    }
+
+    leftButton.addEventListener('click', scrollLeft);
+    rightButton.addEventListener('click', scrollRight);
+
+    // Touch events for mobile swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    container.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    container.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX) {
+            scrollRight();
+        }
+        if (touchEndX > touchStartX) {
+            scrollLeft();
+        }
+    }
+
+    // Initial update
+    updateGallery();
+
+    // Update on window resize
+    window.addEventListener('resize', updateGallery);
+});
 
 
 // testimonials JS
