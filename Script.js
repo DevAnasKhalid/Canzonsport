@@ -98,6 +98,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+
+    
+    // short video
+    const video = document.getElementById('myVideo');
+
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                video.play(); // Play video when it is visible
+            } else {
+                video.pause(); // Pause video when it goes out of view
+            }
+        });
+    });
+
+    // Observe the video element
+    observer.observe(video);
+
+        // short video end
+    
     // FAQ toggle functionality
     document.querySelectorAll('.faq-question').forEach(question => {
         question.addEventListener('click', function () {
