@@ -368,6 +368,87 @@ h2 {
 }
 
 
+
+/* video gallry*/
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gallery-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.video-gallery {
+    position: relative;
+    overflow: hidden;
+}
+
+.video-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.video-item {
+    flex: 0 0 calc(33.333% - 20px);
+    margin: 0 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 215px;
+    border: none;
+}
+
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.scroll-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.scroll-left {
+    left: 10px;
+}
+
+.scroll-right {
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .video-item {
+        flex: 0 0 calc(100% - 20px);
+    }
+
+    .scroll-button {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+}
+
+/* video gallry end*/
+
+
 .faq-item {
     margin-bottom: 1rem;
 
