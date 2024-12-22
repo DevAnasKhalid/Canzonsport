@@ -16,6 +16,10 @@
     font-family: 'Poppins', 'Roboto', 'Arial', sans-serif;
 }
 
+    ::selection {
+      background-color: #d11010; /* Highlight background color */
+      color: #000000;           /* Highlight text color */
+    }
 
 
 body {
