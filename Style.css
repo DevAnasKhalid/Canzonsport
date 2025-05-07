@@ -458,11 +458,17 @@ h2 {
 /* video gallry end*/
 
 
+#faq{
+padding: 30px;
+}
+
 .faq-item {
     margin-bottom: 1rem;
     padding: 30px;
 
 }
+
+
 
 
 
