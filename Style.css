@@ -950,8 +950,8 @@ footer {
     color: var(--all-mini-boxs-text-color);
     padding: 20px 0;
     box-shadow: 0px -5px 10px rgba(252, 3, 3, 0.993);
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
 
 
   }
