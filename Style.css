@@ -360,7 +360,7 @@ h2 {
 
 @media (max-width: 480px) {
     .slider-container {
-        height: 15vh; /* Further adjust height for very small screens */
+        height: 16vh; /* Further adjust height for very small screens */
     }
 
     .prev, .next {
