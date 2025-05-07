@@ -189,7 +189,7 @@ nav ul li a {
 
 
 /* Media Query for Mobile */
-@media (max-width: 1013px) {
+@media (max-width: 1024px) {
     nav ul {
         display: none; /* Hide items by default */
         flex-direction: column; /* Stack items vertically */
