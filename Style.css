@@ -213,9 +213,7 @@ nav ul li a {
         display: flex; /* Show items when the menu is toggled */
     }
 
-    .menu-toggle {
-        display: block; /* Show toggle button */
-    }
+
 
     nav ul li {
         margin: 0.5rem 0; /* Add vertical spacing between items */
@@ -223,8 +221,11 @@ nav ul li a {
     }
 }
 
-
-
+@media (max-width: 1024px) {
+    .menu-toggle {
+        display: block; /* Show toggle button */
+    }
+}
 
 section {
    /*  padding: 4rem 1rem; */
