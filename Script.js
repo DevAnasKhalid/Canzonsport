@@ -420,33 +420,97 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 11. Short Video Section Logic ---
+    // --- 11. Short Video Section Logic (Enhanced) ---
+    const shortVideoWrapper = document.querySelector('.short-video-wrapper');
     const shortVideo = document.querySelector('.short-video-player');
     const shortPlayBtn = document.querySelector('.short-vid-play-btn');
+    const shortVolumeBtn = document.querySelector('.short-vid-volume-btn');
 
-    if (shortVideo && shortPlayBtn) {
-        const toggleShortVideo = () => {
-            if (shortVideo.paused) {
-                shortVideo.play();
-                shortPlayBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-            } else {
-                shortVideo.pause();
-                shortPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-            }
+    if (shortVideo && shortPlayBtn && shortVolumeBtn && shortVideoWrapper) {
+        let hideControlsTimeout;
+
+        // --- Helper Functions ---
+        const updatePlayIcon = () => {
+            shortPlayBtn.innerHTML = shortVideo.paused ?
+                '<i class="fa-solid fa-play"></i>' :
+                '<i class="fa-solid fa-pause"></i>';
         };
 
-        shortPlayBtn.addEventListener('click', (e) => {
+        const updateVolumeIcon = () => {
+            shortVolumeBtn.innerHTML = shortVideo.muted ?
+                '<i class="fa-solid fa-volume-xmark"></i>' :
+                '<i class="fa-solid fa-volume-high"></i>';
+        };
+
+        const showControls = () => {
+            shortVideoWrapper.classList.remove('controls-hidden');
+            clearTimeout(hideControlsTimeout);
+            hideControlsTimeout = setTimeout(() => {
+                if (!shortVideo.paused) { // Only hide if playing
+                    shortVideoWrapper.classList.add('controls-hidden');
+                }
+            }, 5000);
+        };
+
+        // --- Event Listeners ---
+
+        // Play/Pause Toggle
+        const togglePlay = (e) => {
+            if (e) e.stopPropagation();
+            if (shortVideo.paused) {
+                shortVideo.play();
+            } else {
+                shortVideo.pause();
+                showControls(); // Keep controls visible when paused
+            }
+            updatePlayIcon();
+        };
+
+        shortPlayBtn.addEventListener('click', togglePlay);
+        shortVideo.addEventListener('click', togglePlay);
+
+        // Volume Toggle
+        shortVolumeBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleShortVideo();
+            shortVideo.muted = !shortVideo.muted;
+            updateVolumeIcon();
         });
 
-        shortVideo.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleShortVideo();
-        });
+        // Auto-Hide Controls Interaction
+        shortVideoWrapper.addEventListener('mousemove', showControls);
+        shortVideoWrapper.addEventListener('click', showControls);
+        shortVideoWrapper.addEventListener('touchstart', showControls, { passive: true });
 
-        // Sync icon
-        shortVideo.addEventListener('play', () => { shortPlayBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'; });
-        shortVideo.addEventListener('pause', () => { shortPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>'; });
+        // --- Auto Play/Pause on Scroll ---
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Auto Play Logic
+                    shortVideo.play().then(() => {
+                        // Try to unmute if requested, but browser might block
+                        // User requirement: "volume also enabled" -> implies unmuted
+                        // We attempt to unmute. If it fails, it stays muted.
+                        shortVideo.muted = false;
+                    }).catch(error => {
+                        // Autoplay blocked (likely due to unmuted), fallback to muted
+                        shortVideo.muted = true;
+                        shortVideo.play();
+                    });
+                } else {
+                    // Auto Pause Logic
+                    shortVideo.pause();
+                }
+                updatePlayIcon();
+                updateVolumeIcon();
+            });
+        }, { threshold: 0.5 }); // 50% visible triggers action
+
+        videoObserver.observe(shortVideoWrapper);
+
+        // Initial setup
+        updatePlayIcon();
+        updateVolumeIcon();
+        showControls();
     }
 
     // --- 12. General Scroll Animations (New) ---
