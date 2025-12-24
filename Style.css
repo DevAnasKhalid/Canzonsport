@@ -337,7 +337,7 @@ nav {
 }
 
 /* Mobile Nav */
-@media (max-width: 768px) {
+@media (max-width: 1050px) {
   .nav-links {
     position: fixed;
     top: 81px;
