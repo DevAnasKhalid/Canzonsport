@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const messages = [
         "✈️ WORLDWIDE FAST SHIPPING",
         "📷 DAILY UPDATES THROUGH VIDEOS",
-        "👕 LOW CUSTOM MOQ"
+        "👕 LOW CUSTOM MOQ (Only 20 Pieces Per Design)",
+        "FREE Mockup designs to see your vision before production!",
     ];
     let msgIndex = 0;
     const msgElement = document.getElementById('notification-msg');
@@ -183,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (row1 && row2) {
         const imagesNodes = [
-            'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502318/Garment_Manufacturer_and_Supplier_custom_clothing_dgn7oa.jpg',
             'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502318/Manufacturer_Garment_and_Supplier_of_custom_clothing_bbikrm.png',
             'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726502295/CANZON_SPORT_Company_manufacturer_and_exporter_of_High_Quality_Apparel_Textile_Clothing._We_Provide_Customized_Clothing_with_Low_MOQs._rexbfr.png',
             'https://res.cloudinary.com/dgjlnqft1/image/upload/v1726851056/Canzon_sport_kvgbe4.jpg',
@@ -232,6 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentSlide = 0;
 
         card.addEventListener('click', (e) => {
+            // Ignore clicks generated immediately after a swipe/touch drag
+            if (card.dataset.swiped === 'true') { card.dataset.swiped = 'false'; return; }
             if (e.target.closest('.svc-btn')) return;
 
             const wasZoomed = card.classList.contains('zoomed');
@@ -254,8 +256,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (slides.length > 0 && nextBtn && prevBtn) {
             const updateSlide = () => {
+                slidesContainer.style.transition = 'transform 0.5s ease-in-out';
                 slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
             };
+
+            // Ensure smooth initial state
+            slidesContainer.style.transform = `translateX(0)`;
+            slidesContainer.style.transition = 'transform 0.5s ease-in-out';
 
             nextBtn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -272,6 +279,65 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentSlide < 0) currentSlide = slides.length - 1;
                 updateSlide();
             });
+
+            /* Pointer / Touch swipe support for touch devices */
+            let isPointerDown = false;
+            let startX = 0;
+            let movedX = 0;
+            let isDragging = false;
+
+            const onPointerDown = (e) => {
+                isPointerDown = true;
+                startX = (e.touches ? e.touches[0].clientX : e.clientX);
+                movedX = 0;
+                isDragging = false;
+                slidesContainer.style.transition = 'none';
+            };
+
+            const onPointerMove = (e) => {
+                if (!isPointerDown) return;
+                const x = (e.touches ? e.touches[0].clientX : e.clientX);
+                movedX = x - startX;
+                if (Math.abs(movedX) > 10) {
+                    isDragging = true;
+                    // allow user to feel the drag
+                    slidesContainer.style.transform = `translateX(calc(-${currentSlide * 100}% + ${movedX}px))`;
+                }
+            };
+
+            const onPointerUp = (e) => {
+                if (!isPointerDown) return;
+                isPointerDown = false;
+                slidesContainer.style.transition = 'transform 0.5s ease-in-out';
+                if (isDragging) {
+                    if (movedX < -40) {
+                        currentSlide++;
+                        if (currentSlide >= slides.length) currentSlide = 0;
+                    } else if (movedX > 40) {
+                        currentSlide--;
+                        if (currentSlide < 0) currentSlide = slides.length - 1;
+                    }
+                    updateSlide();
+                    // Prevent card click (zoom) right after swipe
+                    card.dataset.swiped = 'true';
+                    setTimeout(() => { card.dataset.swiped = 'false'; }, 50);
+                    isDragging = false;
+                    movedX = 0;
+                } else {
+                    // Not a drag — do nothing (regular click will handle zoom)
+                }
+            };
+
+            // touch events
+            slidesContainer.addEventListener('touchstart', onPointerDown, { passive: true });
+            slidesContainer.addEventListener('touchmove', onPointerMove, { passive: true });
+            slidesContainer.addEventListener('touchend', onPointerUp);
+
+            // mouse events (desktop)
+            slidesContainer.addEventListener('mousedown', onPointerDown);
+            slidesContainer.addEventListener('mousemove', onPointerMove);
+            slidesContainer.addEventListener('mouseup', onPointerUp);
+            slidesContainer.addEventListener('mouseleave', onPointerUp);
         }
     });
 
@@ -316,6 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         startAutoScroll();
     }
+
 
     // --- 9. Counter Section Animation ---
     const counterSection = document.getElementById('counter');

@@ -605,6 +605,7 @@ nav {
 /* =========================================
    6a. SERVICES SECTION (NEW CAROUSEL)
    ========================================= */
+
 .services-nav {
   display: flex;
   justify-content: center;
@@ -641,24 +642,37 @@ nav {
   /* Hide scrollbar for cleaner look, interactions via buttons/swipe */
 }
 
-@media (max-width: 1050px) {
-  .services-slider-wrapper {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
 
-  .services-track {
-    width: max-content;
-    min-width: 100%;
-  }
-
-  .service-card {
-    flex: 0 0 280px;
-    min-width: 280px;
-  }
+.services-slider-wrapper {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
+
+.services-track {
+  width: max-content;
+  min-width: 100%;
+}
+
+.service-card {
+  flex: 0 0 280px;
+  min-width: 280px;
+}
+
+/* Make mini-carousel prev/next buttons visible and larger on touch devices */
+.svc-btn {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.95);
+  width: 40px;
+  height: 40px;
+  z-index: 20;
+}
+
+.svc-btn i {
+  font-size: 0.95rem;
+}
+
 
 /* Track for the main carousel (all service cards) */
 .services-track {
@@ -781,6 +795,7 @@ nav {
 .svc-next {
   right: 10px;
 }
+
 
 /* =========================================
    7. PROCESS TIMELINE
@@ -1812,15 +1827,6 @@ footer {
 .controls-hidden .short-vid-volume-btn {
   opacity: 0;
   pointer-events: none;
-}
-
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-transition: all 0.3s;
-z-index: 10;
-backdrop-filter: blur(5px);
 }
 
 .short-vid-play-btn:hover {
