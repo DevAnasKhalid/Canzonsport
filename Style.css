@@ -1005,47 +1005,39 @@ nav {
 /* Video Slider */
 .video-slider-container {
   overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
   padding: 20px 0;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-.video-slider {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-}
-
-.video-card {
-  width: 300px;
-  flex-shrink: 0;
-  scroll-snap-align: center;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-
-.video-slider-container {
-  overflow: hidden;
-  width: 100%;
+.video-slider-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
 }
 
 .video-slider {
   display: flex;
   gap: 30px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 20px;
-  scrollbar-width: none;
-  /* Firefox */
+  width: max-content;
+  /* No overflow on slider itself, container handles scrolling */
 }
 
-.video-slider::-webkit-scrollbar {
-  display: none;
-  /* Chrome/Safari */
+.video-card {
+  flex: 0 0 320px;
+  /* Fixed width */
+  height: 200px;
+  /* Fixed height for consistency */
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  background: black;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .video-card {
@@ -1896,13 +1888,33 @@ backdrop-filter: blur(5px);
 /* =========================================
    15. Client Feedback (Amazon Style)
    ========================================= */
+.feedback-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .feedback-wrapper {
+    padding: 0 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-wrapper {
+    padding: 0 45px !important;
+  }
+}
+
 .feedback-slider {
   display: flex;
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   padding: 10px 5px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .feedback-slider::-webkit-scrollbar {
@@ -1919,6 +1931,9 @@ backdrop-filter: blur(5px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   text-align: left;
   border: 1px solid #eee;
+  overflow: hidden;
+  box-sizing: border-box;
+  scroll-snap-align: start;
 }
 
 @media (min-width: 768px) {
@@ -1996,6 +2011,9 @@ backdrop-filter: blur(5px);
   display: flex;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
 }
 
 .review-images img {
@@ -2005,6 +2023,27 @@ backdrop-filter: blur(5px);
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 4px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .review-images {
+    gap: 8px;
+  }
+
+  .review-images img {
+    width: calc((100% - 16px) / 3);
+    height: auto;
+    aspect-ratio: 1;
+    max-width: 88px;
+  }
+}
+
+@media (max-width: 360px) {
+  .review-images img {
+    width: calc((100% - 16px) / 3);
+    max-width: 70px;
+  }
 }
 
 /* =========================================

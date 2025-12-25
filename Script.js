@@ -364,17 +364,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 10. Video Gallery Logic (Enhanced Drag & Scroll) ---
+    const videoSliderContainer = document.querySelector('.video-slider-container');
     const videoSlider = document.querySelector('.video-slider');
     const vidPrev = document.getElementById('vid-prev');
     const vidNext = document.getElementById('vid-next');
 
-    if (videoSlider && vidPrev && vidNext) {
-        // Button Navigation
+    if (videoSliderContainer && videoSlider && vidPrev && vidNext) {
+        // Function to get scroll distance based on card width
+        const getScrollDistance = () => {
+            const firstCard = videoSlider.querySelector('.video-card');
+            if (firstCard) {
+                // Get card width including gap
+                const cardWidth = firstCard.offsetWidth;
+                const gap = 30; // Match CSS gap value
+                return cardWidth + gap;
+            }
+            // Fallback
+            return 350; // 320px card + 30px gap
+        };
+
+        // Button Navigation - scroll the container, not the slider
         vidPrev.addEventListener('click', () => {
-            videoSlider.scrollBy({ left: -320, behavior: 'smooth' });
+            const scrollDistance = getScrollDistance();
+            videoSliderContainer.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
         });
         vidNext.addEventListener('click', () => {
-            videoSlider.scrollBy({ left: 320, behavior: 'smooth' });
+            const scrollDistance = getScrollDistance();
+            videoSliderContainer.scrollBy({ left: scrollDistance, behavior: 'smooth' });
         });
 
         // Drag to Scroll Logic
@@ -390,32 +406,32 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        videoSlider.addEventListener('mousedown', (e) => {
+        videoSliderContainer.addEventListener('mousedown', (e) => {
             isDown = true;
-            videoSlider.classList.add('active');
-            startX = e.pageX - videoSlider.offsetLeft;
-            scrollLeft = videoSlider.scrollLeft;
+            videoSliderContainer.classList.add('active');
+            startX = e.pageX - videoSliderContainer.offsetLeft;
+            scrollLeft = videoSliderContainer.scrollLeft;
             toggleIframes(false); // Disable iframes so drag works
         });
 
-        videoSlider.addEventListener('mouseleave', () => {
+        videoSliderContainer.addEventListener('mouseleave', () => {
             isDown = false;
-            videoSlider.classList.remove('active');
+            videoSliderContainer.classList.remove('active');
             toggleIframes(true);
         });
 
-        videoSlider.addEventListener('mouseup', () => {
+        videoSliderContainer.addEventListener('mouseup', () => {
             isDown = false;
-            videoSlider.classList.remove('active');
+            videoSliderContainer.classList.remove('active');
             toggleIframes(true);
         });
 
-        videoSlider.addEventListener('mousemove', (e) => {
+        videoSliderContainer.addEventListener('mousemove', (e) => {
             if (!isDown) return;
             e.preventDefault();
-            const x = e.pageX - videoSlider.offsetLeft;
+            const x = e.pageX - videoSliderContainer.offsetLeft;
             const walk = (x - startX) * 2; // Scroll-fast
-            videoSlider.scrollLeft = scrollLeft - walk;
+            videoSliderContainer.scrollLeft = scrollLeft - walk;
         });
     }
 
@@ -535,11 +551,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const fbNext = document.getElementById('fb-next');
 
     if (fbSlider && fbPrev && fbNext) {
+        // Function to get scroll distance based on card width
+        const getScrollDistance = () => {
+            const firstCard = fbSlider.querySelector('.review-card');
+            if (firstCard) {
+                // Get card width including gap
+                const cardWidth = firstCard.offsetWidth;
+                const gap = 20; // Match CSS gap value
+                return cardWidth + gap;
+            }
+            // Fallback for mobile (full width) or desktop
+            return window.innerWidth <= 768 ? window.innerWidth : 520;
+        };
+
         fbPrev.addEventListener('click', () => {
-            fbSlider.scrollBy({ left: -500, behavior: 'smooth' });
+            const scrollDistance = getScrollDistance();
+            fbSlider.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
         });
         fbNext.addEventListener('click', () => {
-            fbSlider.scrollBy({ left: 500, behavior: 'smooth' });
+            const scrollDistance = getScrollDistance();
+            fbSlider.scrollBy({ left: scrollDistance, behavior: 'smooth' });
         });
     }
 
