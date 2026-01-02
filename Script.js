@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const messages = [
         "✈️ WORLDWIDE FAST SHIPPING",
         "📷 DAILY UPDATES THROUGH VIDEOS",
-        "👕 LOW CUSTOM MOQ (Only 20 Pieces Per Design)",
-        "FREE Mockup designs to see your vision before production!",
+        "👕 LOW CUSTOM MOQ (20 Pieces Per Design)",
+        "FREE Mockup Designs to See Your Vision Before Production!",
     ];
     let msgIndex = 0;
     const msgElement = document.getElementById('notification-msg');

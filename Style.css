@@ -2,6 +2,13 @@
    1. VARIABLES & RESET
    ========================================= */
 :root {
+  /* Site Scrollbar */
+  --scrollbar-width: 12px;
+  --scrollbar-track-bg: #c6d317;
+  --scrollbar-thumb-bg: linear-gradient(180deg, #fe2d29 0%, #cc1f1c 100%);
+  /* Purple to Blue Gradient */
+  --scrollbar-thumb-hover: linear-gradient(180deg, #fe2d29 0%, #cc1f1c 100%);
+
   --primary-color: #fe2d29;
   --primary-dark: #cc1f1c;
   --secondary-color: #000000;
@@ -45,6 +52,36 @@ body {
   max-width: 100vw;
   position: relative;
 }
+
+/* --- Global Website Scrollbar --- */
+body::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-thumb-bg);
+  border-left: 1px solid var(--glass-border);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+/* Firefox Support */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #fe2d29 var(--bg-light);
+}
+
 
 ul {
   list-style: none;
