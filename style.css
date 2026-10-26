@@ -282,3 +282,34 @@ header.site.scrolled .nav{padding-block:8px}
 html,body{overflow-x:clip}
 .btn{flex-shrink:0;white-space:nowrap}
 @media (min-width:1061px){.menu > li > a,.menu > li > span{padding:10px 7px}.menu{font-size:.9rem}.nav{gap:12px}.logo{font-size:1.4rem}}
+
+/* ============ contact + quote ============ */
+.qsec{background:var(--bg)}
+.qwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:32px;align-items:start}
+@media (max-width:900px){.qwrap{grid-template-columns:1fr}}
+.cinfo{display:grid;gap:14px}
+.cinfo h3,.qform h3{font-family:var(--body);text-transform:none;font-weight:700;font-size:1.45rem;letter-spacing:0}
+.ccard{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;min-width:0}
+.ccard .ci{flex:none;width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.ccard .ci svg{width:22px;height:22px;fill:currentColor}
+.ccard small{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ccard b{display:block;font-size:1.05rem;margin:3px 0 2px;overflow-wrap:anywhere}
+.ccard span{font-size:.85rem;color:var(--muted)}
+.ccard a{color:var(--accent);font-weight:700}
+.wabtn{display:flex;align-items:center;justify-content:center;gap:10px;background:#1F9D55;color:#fff;font-weight:700;text-decoration:none;padding:15px 18px;border-radius:10px}
+.wabtn svg{width:22px;height:22px;fill:#fff}
+.wabtn:hover{background:#178246}
+form.qform{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3vw,34px);box-shadow:0 20px 50px rgba(10,20,40,.10);gap:16px 18px}
+form.qform .fsub{color:var(--muted);font-size:.92rem;margin-top:4px}
+form.qform label{color:var(--ink);font-weight:600;font-size:.88rem;gap:7px}
+form.qform label b{color:var(--accent)}
+form.qform input,form.qform select,form.qform textarea{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-weight:400;transition:border-color .2s,box-shadow .2s}
+form.qform input::placeholder,form.qform textarea::placeholder{color:color-mix(in srgb,var(--muted) 75%,transparent)}
+form.qform select:invalid{color:color-mix(in srgb,var(--muted) 80%,transparent)}
+form.qform select option{color:var(--ink);background:var(--surface)}
+form.qform input:focus,form.qform select:focus,form.qform textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
+form.qform textarea{min-height:140px}
+.fsend{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.fnote{font-size:.82rem;color:var(--muted)}
+form.qform .ok{background:color-mix(in srgb,#1F9D55 12%,transparent);border-left-color:#1F9D55;color:var(--ink)}
+form.qform .lt{display:block}
