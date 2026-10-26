@@ -52,7 +52,7 @@ header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backgrou
 .sub a:hover{background:var(--bg);color:var(--accent)}
 .nav-cta{white-space:nowrap}
 .mobile-nav{display:none}
-@media (max-width:1180px){
+@media (max-width:1060px){
   .menu,.nav-cta{display:none}
   .mobile-nav{display:block}
   .mobile-nav summary{list-style:none;cursor:pointer;font-weight:700;padding:8px 12px;border:1px solid var(--band-muted);border-radius:2px}
@@ -229,3 +229,5 @@ header.site .wrap.nav{position:relative}
 .fly-grid a{padding:7px 0;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--band-fg);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--band-fg) 8%,transparent)}
 .fly-grid a:hover{color:var(--accent)}
 .fly-foot{display:block;padding:12px 18px;border-top:1px solid color-mix(in srgb,var(--band-fg) 12%,transparent);color:var(--accent);font-weight:700;text-decoration:none;font-size:.9rem}
+@media (max-width:1240px) and (min-width:1061px){.nav-cta{display:none}.menu > li > a,.menu > li > span{padding:10px 7px}.logo{font-size:1.4rem}}
+@media (max-width:1300px) and (min-width:1061px){.menu > li.fly-li{position:static}.sub.flyout{left:max(16px,env(safe-area-inset-left,0px))}}
