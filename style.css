@@ -320,3 +320,4 @@ form.qform .lt{display:block}
 .social{flex-wrap:nowrap;gap:8px}
 .social a{width:38px;height:38px;flex:none}
 .social svg{width:17px;height:17px}
+.hero:not(.small) h1{max-width:13ch}
