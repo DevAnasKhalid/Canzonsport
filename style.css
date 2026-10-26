@@ -231,3 +231,54 @@ header.site .wrap.nav{position:relative}
 .fly-foot{display:block;padding:12px 18px;border-top:1px solid color-mix(in srgb,var(--band-fg) 12%,transparent);color:var(--accent);font-weight:700;text-decoration:none;font-size:.9rem}
 @media (max-width:1240px) and (min-width:1061px){.nav-cta{display:none}.menu > li > a,.menu > li > span{padding:10px 7px}.logo{font-size:1.4rem}}
 @media (max-width:1300px) and (min-width:1061px){.menu > li.fly-li{position:static}.sub.flyout{left:max(16px,env(safe-area-inset-left,0px))}}
+
+/* ============ animations ============ */
+#progress{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:3px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:40;pointer-events:none}
+header.site{transition:box-shadow .3s}
+header.site.scrolled{box-shadow:0 8px 24px rgba(0,0,0,.28)}
+header.site .nav{transition:padding .3s}
+header.site.scrolled .nav{padding-block:8px}
+.ticker{background:var(--accent);color:var(--accent-ink);overflow:hidden;white-space:nowrap;padding-block:12px;border-block:2px solid var(--band)}
+.ticker-track{display:inline-flex;gap:0;will-change:transform}
+.ticker span{font-family:var(--display);font-size:1.25rem;letter-spacing:.06em;text-transform:uppercase;padding-inline:22px;display:inline-flex;align-items:center;gap:22px}
+.ticker span::after{content:"";width:9px;height:9px;background:currentColor;transform:rotate(45deg);opacity:.7}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
+  @keyframes stripes{from{background-position:0 0}to{background-position:57.4px 0}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.6);opacity:0}}
+  @keyframes slidein{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+  @keyframes shine{from{left:-60%}to{left:130%}}
+  .hero .eyebrow,.hero h1,.hero .lead,.hero .ctas,.hero .specs,.hero .crumbs,.hero .post-meta{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .hero .crumbs{animation-delay:0s}.hero .eyebrow{animation-delay:.05s}.hero h1{animation-delay:.15s}.hero .lead,.hero .post-meta{animation-delay:.3s}.hero .ctas{animation-delay:.45s}.hero .specs{animation-delay:.6s}
+  .hero::after{animation:stripes 3.5s linear infinite,fadein 1.2s ease both}
+  .ticker-track{animation:marquee 28s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .anim .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+  .anim .rv.in{opacity:1;transform:none}
+  .anim .step.rv::before{content:"";display:block;height:3px;background:var(--accent);margin-top:-27px;margin-bottom:24px;transform:scaleX(0);transform-origin:0 50%;transition:transform 1s ease calc(var(--d,0ms) + .2s)}
+  .anim .step.rv.in::before{transform:scaleX(1)}
+  .card{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+  a.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(10,20,40,.18)}
+  .card .swatch svg{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  a.card:hover .swatch svg{transform:translateY(-8px) rotate(-4deg) scale(1.06)}
+  .market{transition:transform .3s,border-color .3s}
+  .market:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .btn-primary{position:relative;overflow:hidden}
+  .btn-primary::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg)}
+  .btn-primary:hover::after{animation:shine .7s ease}
+  .wa::before{content:"";position:absolute;inset:0;border-radius:inherit;background:#1F9D55;z-index:-1;animation:pulse 2s ease-out infinite}
+  .wa{isolation:isolate}
+  .fly-cat.active .fly-panel{animation:slidein .25s ease both}
+  .has-sub:hover .sub,.has-sub:focus-within .sub{animation:fadein .2s ease both}
+  .fly-grid a,.sub a{transition:color .2s,padding-left .2s}
+  .fly-grid a:hover{padding-left:6px}
+  .faq details[open] p{animation:rise .4s ease both}
+}
+.mobile-nav:not([open]) .mnav{display:none}
+.mnav{overflow-x:hidden;box-sizing:border-box;width:100%}
+.mnav a,.mnav span{overflow-wrap:anywhere}
+html,body{overflow-x:clip}
+.btn{flex-shrink:0;white-space:nowrap}
+@media (min-width:1061px){.menu > li > a,.menu > li > span{padding:10px 7px}.menu{font-size:.9rem}.nav{gap:12px}.logo{font-size:1.4rem}}
