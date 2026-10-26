@@ -36,3 +36,4 @@
   }, {threshold:0.6});
   document.querySelectorAll('.specs b, .fact b').forEach(function(el){ cio.observe(el); });
 })();
+document.querySelectorAll('.gallery').forEach(function(g){var m=g.querySelector('.gmain img');g.querySelectorAll('.gthumb').forEach(function(b){b.addEventListener('click',function(){m.src=b.dataset.src;g.querySelectorAll('.gthumb').forEach(function(o){o.classList.toggle('on',o===b);});});});});
