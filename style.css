@@ -348,3 +348,14 @@ a.card:hover .swatch.ph img{transform:scale(1.05)}
  .tb-rot li{transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
  .tb-rot li.out{opacity:0;transform:translateY(-100%)}
 }
+/* topbar: centred text + stays visible on scroll */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:22;height:38px}
+.topbar .wrap{position:relative;height:38px;padding-block:0;justify-content:flex-end}
+.tb-rot{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);padding-inline:250px;flex:none}
+.tb-rot li{text-align:center}
+header.site{top:calc(env(safe-area-inset-top,0px) + 38px)}
+@media (max-width:640px){
+ .topbar,.topbar .wrap{height:48px}
+ .tb-rot{padding-inline:16px}
+ header.site{top:calc(env(safe-area-inset-top,0px) + 48px)}
+}
