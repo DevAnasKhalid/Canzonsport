@@ -37,3 +37,5 @@
   document.querySelectorAll('.specs b, .fact b').forEach(function(el){ cio.observe(el); });
 })();
 document.querySelectorAll('.gallery').forEach(function(g){var m=g.querySelector('.gmain img');g.querySelectorAll('.gthumb').forEach(function(b){b.addEventListener('click',function(){m.src=b.dataset.src;g.querySelectorAll('.gthumb').forEach(function(o){o.classList.toggle('on',o===b);});});});});
+(function(){var r=document.querySelector('.tb-rot');if(!r)return;var li=r.querySelectorAll('li'),i=0;if(!li.length)return;li[0].classList.add('on');
+setInterval(function(){var c=li[i];c.classList.remove('on');c.classList.add('out');i=(i+1)%li.length;var n=li[i];n.classList.remove('out');n.classList.add('on');setTimeout(function(){c.classList.remove('out');},600);},3500);})();

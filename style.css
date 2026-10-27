@@ -333,3 +333,18 @@ a.card:hover .swatch.ph img{transform:scale(1.05)}
 .gthumb img{width:100%;height:100%;object-fit:cover;display:block}
 .gthumb.on,.gthumb:hover{border-color:var(--accent)}
 .gnote{font-size:.8rem;color:var(--muted)}
+/* rotating announcement bar */
+.topbar{background:linear-gradient(90deg,#B3140C,var(--accent),#B3140C);background-size:200% 100%;color:#fff;font-size:.86rem;font-weight:600;overflow:hidden}
+.topbar .wrap{flex-wrap:nowrap;align-items:center;padding-block:8px}
+.tb-rot{list-style:none;margin:0;padding:0;position:relative;height:1.45em;flex:1;min-width:0;overflow:hidden}
+.tb-rot li{position:absolute;inset:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transform:translateY(100%)}
+.tb-rot li.on{opacity:1;transform:none}
+.tb-cta{flex:none;color:#fff;text-decoration:none;font-weight:700;padding:3px 12px;border:1px solid rgba(255,255,255,.55);border-radius:999px;white-space:nowrap}
+.tb-cta:hover{background:#fff;color:var(--accent)}
+@media (max-width:640px){.tb-cta{display:none}.tb-rot li{white-space:normal;text-align:center}.tb-rot{height:2.9em}}
+@media (prefers-reduced-motion:no-preference){
+ .topbar{animation:tbshift 8s ease infinite}
+ @keyframes tbshift{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+ .tb-rot li{transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+ .tb-rot li.out{opacity:0;transform:translateY(-100%)}
+}
