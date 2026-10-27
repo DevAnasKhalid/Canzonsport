@@ -40,6 +40,6 @@ document.querySelectorAll('.gallery').forEach(function(g){var m=g.querySelector(
 (function(){var r=document.querySelector('.tb-rot');if(!r)return;var li=r.querySelectorAll('li'),i=0;if(!li.length)return;li[0].classList.add('on');
 setInterval(function(){var c=li[i];c.classList.remove('on');c.classList.add('out');i=(i+1)%li.length;var n=li[i];n.classList.remove('out');n.classList.add('on');setTimeout(function(){c.classList.remove('out');},600);},3500);})();
 (function(){var g=document.querySelector('.tgrid');var f=document.querySelector('.tfilter');if(!g||!f)return;var st={color:'',fit:'',q:''};
-function run(){g.querySelectorAll('.tcard').forEach(function(c){c.hidden=!((!st.color||c.dataset.color===st.color)&&(!st.fit||c.dataset.fit===st.fit)&&(!st.q||c.dataset.name.indexOf(st.q)>-1));});}
+function run(){g.querySelectorAll('.tcard').forEach(function(c){c.hidden=!((!st.color||c.dataset.color===st.color)&&(!st.fit||c.dataset.fit===st.fit)&&(!st.q||c.dataset.name.indexOf(st.q)>-1));});var tc=document.querySelector('.tcount');if(tc){var v=g.querySelectorAll('.tcard:not([hidden])').length;tc.textContent='Showing '+v+' of '+tc.dataset.total+' styles';}}
 f.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){st[b.dataset.f]=b.dataset.v;b.parentNode.querySelectorAll('button').forEach(function(o){o.classList.toggle('on',o===b);});run();});});
 var i=document.getElementById('tsearch');if(i)i.addEventListener('input',function(){st.q=i.value.toLowerCase().trim();run();});})();
