@@ -43,3 +43,11 @@ setInterval(function(){var c=li[i];c.classList.remove('on');c.classList.add('out
 function run(){g.querySelectorAll('.tcard').forEach(function(c){c.hidden=!((!st.deco||c.dataset.deco===st.deco)&&(!st.fit||c.dataset.fit===st.fit)&&(!st.q||c.dataset.name.indexOf(st.q)>-1));});var tc=document.querySelector('.tcount');if(tc){var v=g.querySelectorAll('.tcard:not([hidden])').length;tc.textContent='Showing '+v+' of '+tc.dataset.total+' styles';}}
 f.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){st[b.dataset.f]=b.dataset.v;b.parentNode.querySelectorAll('button').forEach(function(o){o.classList.toggle('on',o===b);});run();});});
 var i=document.getElementById('tsearch');if(i)i.addEventListener('input',function(){st.q=i.value.toLowerCase().trim();run();});})();
+
+/* contact: send quote forms by email (FormSubmit) and replace the old placeholder address on older pages */
+(function(){var EM='connect2career.pro@gmail.com',EP='https://formsubmit.co/ajax/'+EM;
+document.querySelectorAll('form.quote').forEach(function(f){if(!f.dataset.endpoint){f.dataset.endpoint=EP;
+ [['_subject','New quote request from canzonsport.com'],['_template','table']].forEach(function(x){var i=document.createElement('input');i.type='hidden';i.name=x[0];i.value=x[1];f.appendChild(i);});}});
+var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n,L=[];while(n=w.nextNode()){if(n.nodeValue.indexOf('info@canzonsport.com')>-1)L.push(n);}
+L.forEach(function(n){n.nodeValue=n.nodeValue.split('info@canzonsport.com').join(EM);});
+document.querySelectorAll('a[href^="mailto:info@canzonsport.com"]').forEach(function(a){a.href='mailto:'+EM;});})();
