@@ -43,8 +43,3 @@ setInterval(function(){var c=li[i];c.classList.remove('on');c.classList.add('out
 function run(){g.querySelectorAll('.tcard').forEach(function(c){c.hidden=!((!st.deco||c.dataset.deco===st.deco)&&(!st.fit||c.dataset.fit===st.fit)&&(!st.q||c.dataset.name.indexOf(st.q)>-1));});var tc=document.querySelector('.tcount');if(tc){var v=g.querySelectorAll('.tcard:not([hidden])').length;tc.textContent='Showing '+v+' of '+tc.dataset.total+' styles';}}
 f.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){st[b.dataset.f]=b.dataset.v;b.parentNode.querySelectorAll('button').forEach(function(o){o.classList.toggle('on',o===b);});run();});});
 var i=document.getElementById('tsearch');if(i)i.addEventListener('input',function(){st.q=i.value.toLowerCase().trim();run();});})();
-
-/* contact: older pages send quote forms by email (FormSubmit) instead of WhatsApp */
-(function(){var EP='https://formsubmit.co/ajax/info@canzonsport.com';
-document.querySelectorAll('form.quote').forEach(function(f){if(!f.dataset.endpoint){f.dataset.endpoint=EP;
- [['_subject','New quote request from canzonsport.com'],['_template','table']].forEach(function(x){var i=document.createElement('input');i.type='hidden';i.name=x[0];i.value=x[1];f.appendChild(i);});}});})();
