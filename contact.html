@@ -72,7 +72,9 @@ document.querySelectorAll('form.quote').forEach(function(f){f.addEventListener('
  fetch(ep,{method:'POST',body:d,headers:{'Accept':'application/json'}}).then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false';});}).then(function(good){
   if(good){ok.textContent='Thank you! Your message has been sent. We will reply within 24 hours.';ok.style.color='';f.reset();}
   else{throw 0;}
- }).catch(function(){ok.innerHTML='Sorry, sending failed. Please email us at <a href="mailto:info@canzonsport.com">info@canzonsport.com</a> or WhatsApp +92 327 7562080.';ok.style.color='#c0392b';})
+ }).catch(function(){var b='';new FormData(f).forEach(function(v,k){if(v&&k.charAt(0)!=='_')b+=k+': '+v+'\n';});
+  var mt='mailto:info@canzonsport.com?subject='+encodeURIComponent('Quote request from '+(d.get('name')||'website'))+'&body='+encodeURIComponent(b);
+  ok.innerHTML='Opening your email app to send this request. If nothing opens, email us at <a href="'+mt+'">info@canzonsport.com</a>.';ok.style.color='';window.location.href=mt;})
  .then(function(){ok.hidden=false;btn.disabled=false;btn.textContent=bt;});
 });});
 </script>
