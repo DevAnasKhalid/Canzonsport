@@ -43,3 +43,19 @@ setInterval(function(){var c=li[i];c.classList.remove('on');c.classList.add('out
 function run(){g.querySelectorAll('.tcard').forEach(function(c){c.hidden=!((!st.deco||c.dataset.deco===st.deco)&&(!st.fit||c.dataset.fit===st.fit)&&(!st.q||c.dataset.name.indexOf(st.q)>-1));});var tc=document.querySelector('.tcount');if(tc){var v=g.querySelectorAll('.tcard:not([hidden])').length;tc.textContent='Showing '+v+' of '+tc.dataset.total+' styles';}}
 f.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){st[b.dataset.f]=b.dataset.v;b.parentNode.querySelectorAll('button').forEach(function(o){o.classList.toggle('on',o===b);});run();});});
 var i=document.getElementById('tsearch');if(i)i.addEventListener('input',function(){st.q=i.value.toLowerCase().trim();run();});})();
+
+/* Medical Wear menu (added after Leather Wear on pages built before it existed) */
+(function(){
+  function run(){
+    if (document.querySelector('a.fly-name[href="medical-wear-manufacturer.html"], a[href="medical-wear-manufacturer.html"] b')) return;
+    var FLY="<li class=\"fly-cat\"><a class=\"fly-name\" href=\"medical-wear-manufacturer.html\">Medical Wear<i aria-hidden=\"true\">\u203a</i></a><div class=\"fly-panel\"><a class=\"fly-all\" href=\"medical-wear-manufacturer.html\">View all</a><div class=\"fly-grid\"><a href=\"custom-medical-scrubs.html\">Medical Scrubs</a><a href=\"custom-lab-coats.html\">Lab Coats</a><a href=\"custom-nurse-uniforms.html\">Nurse Uniforms</a><a href=\"custom-surgical-gowns.html\">Surgical Gowns</a><a href=\"custom-patient-gowns.html\">Patient Gowns</a><a href=\"custom-scrub-caps.html\">Scrub Caps</a></div></div></li>", MOB="<a href=\"medical-wear-manufacturer.html\"><b>Medical Wear</b></a><a class=\"msub\" href=\"custom-medical-scrubs.html\">Medical Scrubs</a><a class=\"msub\" href=\"custom-lab-coats.html\">Lab Coats</a><a class=\"msub\" href=\"custom-nurse-uniforms.html\">Nurse Uniforms</a><a class=\"msub\" href=\"custom-surgical-gowns.html\">Surgical Gowns</a><a class=\"msub\" href=\"custom-patient-gowns.html\">Patient Gowns</a><a class=\"msub\" href=\"custom-scrub-caps.html\">Scrub Caps</a>", FOOT="<li><a href=\"medical-wear-manufacturer.html\">Medical Wear</a></li>";
+    var a=document.querySelector('a.fly-name[href="leather-wear-manufacturer.html"]');
+    if(a){var li=a.closest('li'); if(li) li.insertAdjacentHTML('afterend',FLY);}
+    var m=document.querySelectorAll('a.msub[href="custom-leather-accessories.html"]');
+    m.forEach(function(x){x.insertAdjacentHTML('afterend',MOB);});
+    document.querySelectorAll('li > a[href="leather-wear-manufacturer.html"]').forEach(function(x){
+      if(!x.classList.contains('fly-name') && x.parentElement.tagName==='LI' && !x.parentElement.classList.contains('fly-cat')) x.parentElement.insertAdjacentHTML('afterend',FOOT);
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+})();
