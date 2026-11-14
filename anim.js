@@ -5,6 +5,11 @@ var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+
 j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-56CVRCWK');
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());
+/* Google Analytics 4 G-SP4ZLNE4EG (direct, so data is collected even with an empty GTM container) */
+(function(d){if(d.querySelector('script[src*="gtag/js?id=G-SP4ZLNE4EG"]'))return;
+var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtag/js?id=G-SP4ZLNE4EG';
+(d.head||d.documentElement).appendChild(j);})(document);
+gtag('config','G-SP4ZLNE4EG');
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
