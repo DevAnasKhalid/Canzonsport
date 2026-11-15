@@ -402,3 +402,8 @@ header.site{top:calc(env(safe-area-inset-top,0px) + 38px)}
 .tspecs th{text-align:left;font-weight:600;color:var(--muted,#5b6270);white-space:nowrap;padding:10px 14px;width:42%;vertical-align:top}
 .tspecs td{padding:10px 14px}
 .tcard h3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+/* Speed: the browser only draws catalogue cards when they scroll near the screen (600 cards per page). */
+.tcard{content-visibility:auto;contain-intrinsic-size:auto 510px}
+@media (min-width:700px){.tcard{contain-intrinsic-size:auto 566px}}
+@media (min-width:1100px){.tcard{contain-intrinsic-size:auto 616px}}
