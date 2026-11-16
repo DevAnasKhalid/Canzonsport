@@ -112,3 +112,94 @@ var CZ_WEB3FORMS_KEY = "04fcb891-68cb-4cd4-8439-9cde912a765e";
       .finally(function () { if (btn) { btn.disabled = false; btn.textContent = btn.dataset.t || "Send"; } });
   }, true);
 })();
+
+/* Price ranges (USD per piece, FOB Sialkot): shown on style and category pages and added to Product structured data as an AggregateOffer. */
+(function () {
+  var P = { // style-page file prefix: [low, high, unit]
+    "custom-hoodie":[10,20],"blank-hoodie":[9,18],"hoodie":[12,22],"puff-hoodie":[12,22],"zip-hoodie":[12,22],"sweatshirt":[9,16],
+    "tshirt":[4,9],"oversized-tee":[6,11],"acid-wash":[12,24],"sweatpants":[9,16],"pants":[9,16],"jeans":[12,22],"shirt":[7,14],
+    "shorts":[5,10],"jacket":[18,35],"leggings":[6,12],"sports-bra":[5,10],"tank-top":[4,8],"gym-shorts":[5,10],
+    "compression-shirt":[6,12],"compression-pants":[6,12],"track-jacket":[12,22],"gym-set":[12,22,"set"],
+    "football-jersey":[9,17,"set"],"basketball-uniform":[10,18,"set"],"cricket-uniform":[10,20,"set"],"tracksuit":[16,30,"set"],
+    "two-piece-tracksuit":[16,30,"set"],"baseball-uniform":[12,22,"set"],"cheer-uniform":[18,35,"set"],
+    "american-football-uniform":[25,45,"set"],"hockey-jersey":[14,25],"lacrosse-uniform":[12,22,"set"],"tennis-apparel":[8,15],
+    "softball-uniform":[12,22,"set"],"running-apparel":[6,12],"volleyball-uniform":[8,15,"set"],
+    "boxing-gloves":[8,25,"pair"],"boxing-headgear":[10,22],"body-protector":[15,30],"focus-mitts":[10,20,"pair"],
+    "hand-wraps":[1.5,3,"pair"],"shin-guards":[8,18,"pair"],"heavy-bag":[25,60],"bjj-gi":[25,45],"karate-uniform":[12,35],
+    "no-gi":[9,16],"martial-arts-belt":[1.5,4],"rash-guard":[9,16],"mma-shorts":[8,14],"mma-gloves":[8,18,"pair"],
+    "kick-pads":[15,35],"varsity-jacket":[25,45],"bomber-jacket":[18,32],"puffer-jacket":[20,38],"windbreaker":[10,20],
+    "yoga-leggings":[7,13],"yoga-set":[12,22,"set"],"lounge-set":[18,32,"set"],"athleisure-jacket":[12,22],"bikini":[7,14,"set"],
+    "swimsuit":[9,16],"swim-shorts":[6,12],"cover-up":[7,14],"cycling-jersey":[12,22],"bib-shorts":[15,28],
+    "cycling-jacket":[18,35],"cycling-gloves":[5,10,"pair"],"polo-shirt":[6,12],"chef-uniform":[10,20],"hi-vis":[5,15],
+    "work-trousers":[10,20],"fr-clothing":[25,50],"baseball-cap":[3,7],"trucker-cap":[3,6],"beanie":[2.5,5],"bucket-hat":[3.5,7],
+    "leather-jacket":[45,95],"motorbike-gear":[25,250],"leather-pants":[35,75],"leather-gloves":[8,20,"pair"],
+    "leather-accessory":[5,25],"riding-breeches":[14,26],"riding-top":[10,35],"saddle-pad":[9,18],"riding-gloves":[5,10,"pair"],
+    "half-chaps":[15,30,"pair"],"horse-rug":[30,70],"embroidered-patch":[0.6,2],"woven-patch":[0.4,1.5],
+    "sublimated-patch":[0.5,1.5],"pvc-patch":[0.8,2.5],"chenille-patch":[2,6],"leather-patch":[0.8,2.5],"bullion-patch":[3,10]
+  };
+  var C = { // category page -> style prefix
+    "acid-wash-clothing":"acid-wash","custom-american-football-uniforms":"american-football-uniform","custom-athleisure-jackets":"athleisure-jacket",
+    "custom-baseball-caps":"baseball-cap","custom-baseball-uniforms":"baseball-uniform","custom-basketball-uniforms":"basketball-uniform",
+    "custom-beanies":"beanie","custom-bikinis":"bikini","custom-bjj-gi":"bjj-gi","custom-blank-hoodies":"blank-hoodie",
+    "custom-body-protectors":"body-protector","custom-bomber-jackets":"bomber-jacket","custom-boxing-gloves":"boxing-gloves",
+    "custom-boxing-headgear":"boxing-headgear","custom-bucket-hats":"bucket-hat","custom-bullion-patches":"bullion-patch",
+    "custom-cheer-uniforms":"cheer-uniform","custom-chef-uniforms":"chef-uniform","custom-chenille-patches":"chenille-patch",
+    "custom-compression-pants":"compression-pants","custom-compression-shirts":"compression-shirt","custom-cover-ups":"cover-up",
+    "custom-cricket-uniforms":"cricket-uniform","custom-cycling-bib-shorts":"bib-shorts","custom-cycling-gloves":"cycling-gloves",
+    "custom-cycling-jackets":"cycling-jacket","custom-cycling-jerseys":"cycling-jersey","custom-embroidered-patches":"embroidered-patch",
+    "custom-field-hockey-lacrosse-uniforms":"lacrosse-uniform","custom-flame-resistant-clothing":"fr-clothing","custom-focus-mitts":"focus-mitts",
+    "custom-football-jerseys":"football-jersey","custom-gym-sets":"gym-set","custom-gym-shorts":"gym-shorts","custom-half-chaps":"half-chaps",
+    "custom-hand-wraps":"hand-wraps","custom-heavy-bags":"heavy-bag","custom-hi-vis-workwear":"hi-vis","custom-hockey-jerseys":"hockey-jersey",
+    "custom-hoodies":"custom-hoodie","custom-horse-rugs":"horse-rug","custom-jeans":"jeans","custom-karate-uniforms":"karate-uniform",
+    "custom-kick-pads":"kick-pads","custom-leather-accessories":"leather-accessory","custom-leather-gloves":"leather-gloves",
+    "custom-leather-jackets":"leather-jacket","custom-leather-pants-vests":"leather-pants","custom-leather-patches":"leather-patch",
+    "custom-leggings":"leggings","custom-lounge-sets":"lounge-set","custom-martial-arts-belts":"martial-arts-belt","custom-mma-gloves":"mma-gloves",
+    "custom-mma-shorts":"mma-shorts","custom-motorbike-gear":"motorbike-gear","custom-no-gi-apparel":"no-gi","custom-one-piece-swimsuits":"swimsuit",
+    "custom-pants-trousers":"pants","custom-polo-shirts":"polo-shirt","custom-puffer-jackets":"puffer-jacket","custom-pvc-patches":"pvc-patch",
+    "custom-rash-guards":"rash-guard","custom-riding-breeches":"riding-breeches","custom-riding-gloves":"riding-gloves",
+    "custom-riding-tops-jackets":"riding-top","custom-running-track-apparel":"running-apparel","custom-saddle-pads":"saddle-pad",
+    "custom-shin-guards":"shin-guards","custom-shirts":"shirt","custom-shorts":"shorts","custom-softball-uniforms":"softball-uniform",
+    "custom-sports-bras":"sports-bra","custom-sublimated-patches":"sublimated-patch","custom-sweatpants":"sweatpants",
+    "custom-sweatshirts":"sweatshirt","custom-swim-shorts":"swim-shorts","custom-t-shirts":"tshirt","custom-tank-tops":"tank-top",
+    "custom-tennis-padel-apparel":"tennis-apparel","custom-track-jackets":"track-jacket","custom-tracksuits":"tracksuit",
+    "custom-trucker-caps":"trucker-cap","custom-varsity-jackets":"varsity-jacket","custom-volleyball-uniforms":"volleyball-uniform",
+    "custom-windbreakers":"windbreaker","custom-work-trousers":"work-trousers","custom-woven-patches":"woven-patch",
+    "custom-yoga-leggings":"yoga-leggings","custom-yoga-sets":"yoga-set","heavyweight-hoodie-manufacturer":"hoodie",
+    "oversized-t-shirts":"oversized-tee","puff-print-hoodies":"puff-hoodie","two-piece-tracksuits":"two-piece-tracksuit",
+    "zip-up-hoodies":"zip-hoodie",
+    "custom-sweatpants-joggers":"sweatpants"
+  };
+  var file = (location.pathname.split("/").pop() || "").replace(/\.html$/, "");
+  var isStyle = file.indexOf("-cz-") > 0, key = isStyle ? file.split("-cz-")[0] : C[file];
+  var p = key && P[key]; if (!p) return;
+  var unit = p[2] || "piece";
+  function money(v) { return "$" + (v % 1 ? v.toFixed(2) : v); }
+  var range = money(p[0]) + " – " + money(p[1]);
+  function run() {
+    // 1) structured data
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+      try {
+        var j = JSON.parse(s.textContent), list = Array.isArray(j) ? j : (j["@graph"] || [j]), changed = false;
+        list.forEach(function (o) {
+          if (o && o["@type"] === "Product" && !o.offers) {
+            o.offers = { "@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": p[0], "highPrice": p[1], "offerCount": 1,
+              "url": location.href.split("#")[0].split("?")[0],
+              "eligibleQuantity": { "@type": "QuantitativeValue", "minValue": 25, "unitText": unit },
+              "seller": { "@type": "Organization", "name": "Canzon Sport" } };
+            changed = true;
+          }
+        });
+        if (changed) s.textContent = JSON.stringify(j);
+      } catch (e) {}
+    });
+    // 2) visible price
+    if (document.querySelector(".cz-price")) return;
+    var line = '<p class="cz-price" style="margin:12px 0 0;font-weight:700">Price: <span style="white-space:nowrap">' + range + '</span> per ' + unit +
+      ', FOB Sialkot <span style="font-weight:400;opacity:.8">(MOQ 25 · final price depends on fabric, print and quantity)</span></p>';
+    var stats = isStyle && document.querySelector(".tstats");
+    if (stats) { stats.insertAdjacentHTML("beforebegin", line); return; }
+    var lead = document.querySelector("main .lead") || document.querySelector(".lead");
+    if (lead) lead.insertAdjacentHTML("afterend", line);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
+})();
