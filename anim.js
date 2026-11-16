@@ -73,7 +73,7 @@ var i=document.getElementById('tsearch');if(i)i.addEventListener('input',functio
 })();
 
 /* Quote form: email every request to Canzon Sport through Web3Forms, fall back to WhatsApp if sending fails. */
-var CZ_WEB3FORMS_KEY = "PASTE-YOUR-WEB3FORMS-ACCESS-KEY-HERE";
+var CZ_WEB3FORMS_KEY = "04fcb891-68cb-4cd4-8439-9cde912a765e";
 (function () {
   if (!CZ_WEB3FORMS_KEY || CZ_WEB3FORMS_KEY.indexOf("PASTE") === 0) return; // key not added yet: keep old WhatsApp behaviour
   var WA = "https://wa.me/923277562080?text=";
