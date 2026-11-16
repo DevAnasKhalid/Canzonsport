@@ -71,3 +71,44 @@ var i=document.getElementById('tsearch');if(i)i.addEventListener('input',functio
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
 })();
+
+/* Quote form: email every request to Canzon Sport through Web3Forms, fall back to WhatsApp if sending fails. */
+var CZ_WEB3FORMS_KEY = "PASTE-YOUR-WEB3FORMS-ACCESS-KEY-HERE";
+(function () {
+  if (!CZ_WEB3FORMS_KEY || CZ_WEB3FORMS_KEY.indexOf("PASTE") === 0) return; // key not added yet: keep old WhatsApp behaviour
+  var WA = "https://wa.me/923277562080?text=";
+  function waText(d) {
+    var t = "New quote request%0A";
+    d.forEach(function (v, k) { if (v && k !== "access_key" && k !== "botcheck" && k !== "subject" && k !== "from_name") t += k + ": " + encodeURIComponent(v) + "%0A"; });
+    return t;
+  }
+  document.addEventListener("submit", function (ev) {
+    var f = ev.target;
+    if (!f || !f.matches || !f.matches("form.quote")) return;
+    ev.preventDefault(); ev.stopImmediatePropagation();
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    var ok = f.querySelector(".ok"), btn = f.querySelector("button[type=submit],button:not([type])");
+    var d = new FormData(f);
+    var style = (location.search.match(/[?&]style=([^&]+)/) || [])[1];
+    if (style) d.append("style_code", decodeURIComponent(style));
+    d.append("page", location.href);
+    d.append("access_key", CZ_WEB3FORMS_KEY);
+    d.append("subject", "New quote request" + (d.get("brand") ? " from " + d.get("brand") : "") + " (canzonsport.com)");
+    d.append("from_name", "Canzon Sport website");
+    if (d.get("email")) d.append("replyto", d.get("email"));
+    if (btn) { btn.disabled = true; btn.dataset.t = btn.textContent; btn.textContent = "Sending..."; }
+    fetch("https://api.web3forms.com/submit", { method: "POST", body: d, headers: { Accept: "application/json" } })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || !j.success) throw new Error("not sent");
+        if (ok) { ok.textContent = "Thank you! Your request has been sent. We will reply within 24 hours."; ok.hidden = false; }
+        f.reset();
+        if (window.gtag) gtag("event", "generate_lead", { form: "quote" });
+      })
+      .catch(function () {
+        if (ok) { ok.textContent = "Could not send by email, opening WhatsApp so you can send it there."; ok.hidden = false; }
+        window.open(WA + waText(d), "_blank");
+      })
+      .finally(function () { if (btn) { btn.disabled = false; btn.textContent = btn.dataset.t || "Send"; } });
+  }, true);
+})();
