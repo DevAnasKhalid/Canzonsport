@@ -111,7 +111,64 @@
 <label class="full"><span class="lt">Project details <b aria-hidden="true">*</b></span><textarea name="details" id="q-details" required placeholder="Tell us about your project: styles, colours, fabric, branding, sizes, target date and any reference images you have."></textarea></label>
 <div class="full fsend"><button class="btn btn-primary" type="submit">Send quote request →</button><span class="fnote">No obligation. We never share your details.</span></div>
 <p class="ok" hidden>Thanks, we have your request and will reply within one working day.</p>
-</form></div></div></section></main><footer class="site"><div class="wrap">
+</form></div></div></section></main><!-- Instagram feed (Option A): latest posts from @canzonsports via Behold JSON feed, with a static fallback -->
+<section class="sec cz-ig" aria-labelledby="cz-ig-h">
+<style>
+.cz-ig{padding:72px 0;background:var(--bg)}
+.cz-ig .igh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.cz-ig .igh p{color:var(--muted);margin:8px 0 0;max-width:640px}
+.cz-ig .iggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cz-ig .iggrid.n8{grid-template-columns:repeat(4,1fr)}
+.cz-ig .igt{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:6px;background:var(--line)}
+.cz-ig .igt img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.cz-ig .igt:hover img{transform:scale(1.04)}
+.cz-ig .igt .ov{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;color:#fff;font-size:13px;font-weight:600;line-height:1.35;
+  background:linear-gradient(180deg,transparent 55%,rgba(10,15,30,.78))}
+.cz-ig .igt:hover .ov{background:rgba(232,38,28,.85);align-items:center;justify-content:center;text-align:center;font-size:15px}
+.cz-ig .igt .ov span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cz-ig .reel{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;font-weight:700;padding:4px 7px;border-radius:3px}
+@media (max-width:700px){.cz-ig .iggrid,.cz-ig .iggrid.n8{grid-template-columns:repeat(2,1fr)}.cz-ig{padding:48px 0}}
+</style>
+<div class="wrap">
+  <div class="igh">
+    <div>
+      <div class="eyebrow">Follow our factory</div>
+      <h2 id="cz-ig-h">Fresh from the factory floor</h2>
+      <p>Daily production, finished client orders and new samples, straight from our Sialkot factory on Instagram.</p>
+    </div>
+    <a class="btn btn-primary" href="https://www.instagram.com/canzonsports/" target="_blank" rel="noopener">Follow @canzonsports &rarr;</a>
+  </div>
+  <div class="iggrid" id="cz-ig-grid">
+    <a class="igt" href="https://www.instagram.com/canzonsports/" target="_blank" rel="noopener"><img src="cat-streetwear.jpg" alt="Streetwear made by Canzon Sport" loading="lazy" width="800" height="600"><span class="ov"><span>Streetwear &amp; casual</span></span></a>
+    <a class="igt" href="https://www.instagram.com/canzonsports/" target="_blank" rel="noopener"><img src="cat-boxing.jpg" alt="Boxing gear made by Canzon Sport" loading="lazy" width="800" height="600"><span class="ov"><span>Boxing gear</span></span></a>
+    <a class="igt" href="https://www.instagram.com/canzonsports/" target="_blank" rel="noopener"><img src="cat-gym.jpg" alt="Gym wear made by Canzon Sport" loading="lazy" width="800" height="600"><span class="ov"><span>Gym &amp; fitness wear</span></span></a>
+    <a class="igt" href="https://www.instagram.com/canzonsports/" target="_blank" rel="noopener"><img src="cat-leather.jpg" alt="Leather wear made by Canzon Sport" loading="lazy" width="800" height="600"><span class="ov"><span>Leather wear</span></span></a>
+    <a class="igt" href="https://www.instagram.com/canzonsports/" target="_blank" rel="noopener"><img src="cat-sportswear.jpg" alt="Team kits made by Canzon Sport" loading="lazy" width="800" height="600"><span class="ov"><span>Team kits</span></span></a>
+    <a class="igt" href="https://www.instagram.com/canzonsports/" target="_blank" rel="noopener"><img src="cat-patches.jpg" alt="Custom patches made by Canzon Sport" loading="lazy" width="800" height="600"><span class="ov"><span>Custom patches</span></span></a>
+  </div>
+</div>
+<script>
+(function(){
+  var FEED = "PASTE-BEHOLD-FEED-URL-HERE";
+  if (FEED.indexOf("https://feeds.behold.so/") !== 0) return; // no feed yet: keep the photo grid above
+  var g = document.getElementById("cz-ig-grid");
+  function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  fetch(FEED).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
+    var posts = (d && d.posts || []).slice(0, 8); if (posts.length < 3) return;
+    if (posts.length > 6) posts = posts.slice(0, 8); else posts = posts.slice(0, 6);
+    g.className = "iggrid" + (posts.length === 8 ? " n8" : "");
+    g.innerHTML = posts.map(function(p){
+      var s = p.sizes && (p.sizes.medium || p.sizes.small), img = (s && s.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
+      var cap = (p.prunedCaption || p.caption || "").split("\n")[0].slice(0, 90) || "View on Instagram";
+      var tag = p.isReel ? '<span class="reel">&#9654; REEL</span>' : (p.mediaType === "VIDEO" ? '<span class="reel">&#9654;</span>' : "");
+      return '<a class="igt" href="' + esc(p.permalink) + '" target="_blank" rel="noopener"><img src="' + esc(img) + '" alt="' + esc(cap) +
+        '" loading="lazy" width="400" height="400">' + tag + '<span class="ov"><span>' + esc(cap) + '</span></span></a>';
+    }).join("");
+  }).catch(function(){});
+})();
+</script>
+</section>
+<footer class="site"><div class="wrap">
 <div class="foot">
 <div><a class="logo" href="index.html" aria-label="Canzon Sport home"><img src="logo-icon.png" width="40" height="35" alt=""><span class="wm">CANZON <span class="r">SPORT</span></span></a>
 <p>Custom clothing manufacturer in Sialkot, Pakistan. Sportswear, gym wear, streetwear, jackets, martial arts and workwear for brands worldwide.</p>
