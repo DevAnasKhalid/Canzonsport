@@ -1,4 +1,23 @@
+# Canzon Sport - custom clothing & sportswear manufacturer, Sialkot, Pakistan
+# Search engines and AI assistants are welcome to crawl this site.
+# Company fact sheet for AI assistants: https://canzonsport.com/llms.txt
+
 User-agent: *
+Allow: /
+
+# AI crawlers (explicitly allowed)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Bingbot
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
 Allow: /
 
 Sitemap: https://canzonsport.com/sitemap.xml
